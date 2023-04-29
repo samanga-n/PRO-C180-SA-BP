@@ -34,29 +34,17 @@ function render_elements() {
             }
             let steps = response.routes[0].legs[0].steps
             for (let i = 0; i < steps.length; i++) {
-                let image;
-                let distance = steps[i].distance
-                let instruction = steps[i].maneuver.instruction
-                if (instruction.includes("Turn right")) {
-                    image = "turn_right"
-                } else if (instruction.includes("Turn left")) {
-                    image = "turn_left"
-                }
+                
                 if (i > 0) {
                     $("#scene_container").append(
                         `
                             <a-entity gps-entity-place="latitude: ${steps[i].maneuver.location[1]}; longitude: ${steps[i].maneuver.location[0]};">
                                 <a-image 
-                                    name="${instruction}"
-                                    src="./assets/${images[image]}"
-                                    look-at="#step_${i - 1}"
-                                    scale="5 5 5"
-                                    id="step_${i}"
-                                    position="0 0 0"
+                                   
                                 >
                                 </a-image>
                                 <a-entity>
-                                    <a-text height="50" value="${instruction} (${distance}m)"></a-text>
+                                   
                                 </a-entity>
                             </a-entity>
                         `
@@ -66,16 +54,11 @@ function render_elements() {
                         `
                             <a-entity gps-entity-place="latitude: ${steps[i].maneuver.location[1]}; longitude: ${steps[i].maneuver.location[0]};">
                                 <a-image 
-                                    name="${instruction}"
-                                    src="./assets/ar_start.png"
-                                    look-at="#step_${i + 1}"
-                                    scale="5 5 5"
-                                    id="step_${i}"
-                                    position="0 0 0"
+                                   
                                 >
                                 </a-image>
                                 <a-entity>
-                                    <a-text height="50" value="${instruction} (${distance}m)"></a-text>
+                                   
                                 </a-entity>
                             </a-entity>
                         `
