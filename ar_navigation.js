@@ -25,46 +25,32 @@ function render_elements() {
         url: `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates.source_lon}%2C${coordinates.source_lat}%3B${coordinates.destination_lon}%2C${coordinates.destination_lat}?alternatives=true&geometries=polyline&steps=true&access_token=pk.eyJ1IjoiYXBvb3J2ZWxvdXMiLCJhIjoiY2ttZnlyMDgzMzlwNTJ4a240cmEzcG0xNyJ9.-nSyL0Gy2nifDibXJg4fTA`,
         type: "get",
         success: function (response) {
-            let images = {
-                "turn_right": "ar_right.png",
-                "turn_left": "ar_left.png",
-                "slight_right": "ar_slight_right.png",
-                "slight_left": "ar_slight_left.png",
-                "straight": "ar_straight.png"
-            }
-            let steps = response.routes[0].legs[0].steps
-            for (let i = 0; i < steps.length; i++) {
+//             let images = {
+//                 "turn_right": "ar_right.png",
+//                 "turn_left": "ar_left.png",
+//                 "slight_right": "ar_slight_right.png",
+//                 "slight_left": "ar_slight_left.png",
+//                 "straight": "ar_straight.png"
+//             }
+//             let steps = response.routes[0].legs[0].steps
+//             for (let i = 0; i < steps.length; i++) {
                 
-                if (i > 0) {
-                    $("#scene_container").append(
-                        `
-                            <a-entity gps-entity-place="latitude: ${steps[i].maneuver.location[1]}; longitude: ${steps[i].maneuver.location[0]};">
-                                <a-image 
-                                   
-                                >
-                                </a-image>
-                                <a-entity>
-                                   
-                                </a-entity>
-                            </a-entity>
-                        `
-                    )
-                } else {
-                    $("#scene_container").append(
-                        `
-                            <a-entity gps-entity-place="latitude: ${steps[i].maneuver.location[1]}; longitude: ${steps[i].maneuver.location[0]};">
-                                <a-image 
-                                   
-                                >
-                                </a-image>
-                                <a-entity>
-                                   
-                                </a-entity>
-                            </a-entity>
-                        `
-                    )
-                }
-            }
+//                 if (i > 0) {
+//                     $("#scene_container").append(
+//                         `
+//                             <a-entity gps-entity-place="latitude: ${steps[i].maneuver.location[1]}; longitude: ${steps[i].maneuver.location[0]};">
+//                                
+//                         `
+//                     )
+//                 } else {
+//                     $("#scene_container").append(
+//                         `
+//                             <a-entity gps-entity-place="latitude: ${steps[i].maneuver.location[1]}; longitude: ${steps[i].maneuver.location[0]};">
+//                                 
+//                         `
+//                     )
+//                 }
+//             }
         }
     })
 }
